@@ -1,0 +1,28 @@
+api_profile:
+  version: "1"
+  status: proposed
+  aip_informed: true
+  aip_conformance_claimed: false
+  contract:
+    openapi_source: "openapi/openapi.yaml"
+    base_path: "/api/v1"
+    compatibility_policy: additive-with-deprecation-window
+  resources:
+    naming: plural-collections-opaque-identifiers
+    standard_methods: [get, list, create, update, delete]
+  query:
+    supported_parameters: [page_size, page_token, filter, order_by, update_mask]
+    page_size_max: 100
+  mutations:
+    require_request_id: true
+    idempotency: required-for-external-effects
+  operations:
+    enabled_for_async_or_side_effecting_actions: true
+  security:
+    tenant_context: verified-authentication-only
+    authorization: resource-and-action-level
+    audit: required-for-mutations-and-tools
+    redaction: required
+    mcp_tools: typed-allowlist-fail-closed
+  evidence:
+    required_before_release: [local_tests, authenticated_integration, approval]
