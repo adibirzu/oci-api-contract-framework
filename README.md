@@ -7,7 +7,7 @@ A compact, reusable API strategy for OCI-oriented and multicloud products. It tu
 1. Inventory endpoints, consumers, data classes, mutation risk, tenant behavior, and evidence.
 2. Adopt the profile in [`templates/api-profile.yaml`](templates/api-profile.yaml).
 3. Plan the work with [`docs/prds/`](docs/prds/) and track it in [`STATUS.md`](STATUS.md).
-4. Validate documentation with `./scripts/check-docs.sh`; validate implementations in their owning product.
+4. Validate documentation with `./scripts/check-docs.sh`; GitHub Actions also runs this check on pull requests and pushes to `main`. Validate implementations in their owning product.
 
 ## Architecture
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -eu
 
-root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+root=$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)
 required="AGENTS.md CLAUDE.md README.md STATUS.md docs/architecture.md docs/capabilities.md docs/fastapi-openapi.md docs/migration/oci-demo-adapter.md docs/roadmap.md templates/api-profile.yaml templates/openapi-security-snippet.yaml"
 
 for file in $required; do
