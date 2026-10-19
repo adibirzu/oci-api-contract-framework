@@ -6,6 +6,7 @@
 | Build foundations | PRD-002 | proposed | approved inventory and security decisions |
 | Secure actions/tools | PRD-003 | proposed | PRD-002 request context and policy |
 | Migrate consumers | PRD-004 | proposed | stable v1 contracts and telemetry |
+| Modular adoption package | PRD-005 | code-backed | product adoption and full OpenAPI lint/tooling choice |
 
 ## Decision gates
 

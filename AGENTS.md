@@ -6,7 +6,8 @@ Use this repository to define and migrate product API contracts. It is a framewo
 
 1. Read `README.md`, then `docs/architecture.md`.
 2. For a product migration, read `docs/migration/oci-demo-adapter.md` and the relevant PRD in `docs/prds/`.
-3. Copy and tailor `templates/api-profile.yaml`; do not claim a capability is deployed until evidence exists.
+3. Copy and tailor `templates/api-profile.yaml`, then create a product-owned adapter from `templates/product-api-adapter.yaml`; keep contract, runtime modules, and deployment state separate.
+4. Read `docs/modular-adoption.md` before introducing a new product integration. Do not claim a capability is deployed until evidence exists.
 
 ## Operating rules
 
@@ -17,7 +18,8 @@ Use this repository to define and migrate product API contracts. It is a framewo
 - Treat MCP and agent tool execution as privileged actions: allowlist, validate typed inputs, least privilege, audit, timeout, redact.
 - Classify claims as proposed, code-backed, locally verified, provider verified, or release accepted. Never promote evidence classes.
 - Keep secrets, customer data, tokens, topology, and raw operational receipts out of this repository.
+- Keep this framework modular: adapters declare a bounded product integration; product code owns its OpenAPI document, runtime modules, implementation tests, and chosen semantic linter. Do not turn this repository into a shared gateway or product-control plane.
 
 ## Definition of done
 
-Run `./scripts/check-docs.sh`. Update `STATUS.md` with evidence, risk, and next action. Changes to a product require its own tests, review, and release authority.
+Run `./scripts/check-docs.sh` and, for an OpenAPI JSON example or product artifact, `sh ./scripts/check-contract.sh path/to/openapi.json`. Update `STATUS.md` with evidence, risk, and next action. Changes to a product require its own tests, review, and release authority.

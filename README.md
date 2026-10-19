@@ -5,9 +5,12 @@ A compact, reusable API strategy for OCI-oriented and multicloud products. It tu
 ## Use it
 
 1. Inventory endpoints, consumers, data classes, mutation risk, tenant behavior, and evidence.
-2. Adopt the profile in [`templates/api-profile.yaml`](templates/api-profile.yaml).
-3. Plan the work with [`docs/prds/`](docs/prds/) and track it in [`STATUS.md`](STATUS.md).
-4. Validate documentation with `./scripts/check-docs.sh`; validate implementations in their owning product.
+2. Adopt the shared profile in [`templates/api-profile.yaml`](templates/api-profile.yaml), then create one product-owned adapter from [`templates/product-api-adapter.yaml`](templates/product-api-adapter.yaml).
+3. Keep the canonical OpenAPI document and its implementation in the owning product. The framework stays product-neutral.
+4. Validate an OpenAPI JSON artifact locally with `sh ./scripts/check-contract.sh path/to/openapi.json`; see the safe example in [`examples/components.openapi.json`](examples/components.openapi.json).
+5. Plan the work with [`docs/prds/`](docs/prds/) and track it in [`STATUS.md`](STATUS.md). Validate documentation with `./scripts/check-docs.sh`; GitHub Actions also runs this check on pull requests and pushes to `main`.
+
+For the product/adapter boundary, implementation choices, and a minimal CI pattern, read the [modular adoption guide](docs/modular-adoption.md).
 
 ## Architecture
 
@@ -20,6 +23,8 @@ The framework has five portable layers:
 | Operations | pagination, idempotency, jobs, errors, observability | [capabilities](docs/capabilities.md) |
 | Migration | inventory, compatibility, consumer rollout, rollback | [migration playbook](docs/migration/oci-demo-adapter.md) |
 | Governance | PRDs, evidence, decision records, roadmap | [roadmap](docs/roadmap.md) |
+
+Products consume the framework through a small adapter. A product adapter names its contract location, resource vocabulary, authentication boundary, implementation choice, and evidence; it does not copy credentials, deployment topology, provider receipts, or other operational state into this repository.
 
 ## AIP-informed, not AIP-dependent
 

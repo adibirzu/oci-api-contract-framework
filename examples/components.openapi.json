@@ -1,0 +1,28 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Component API example",
+    "version": "1.0.0",
+    "description": "Illustrative local contract; it is not a deployed service."
+  },
+  "paths": {
+    "/api/v1/components/{component}": {
+      "get": {
+        "operationId": "getComponent",
+        "responses": {
+          "200": {"description": "Component returned"},
+          "403": {"description": "Caller is not authorized", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Error"}}}}
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "required": ["error"],
+        "properties": {"error": {"type": "object"}}
+      }
+    }
+  }
+}
