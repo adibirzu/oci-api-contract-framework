@@ -37,3 +37,21 @@ Do not infer a deployed component, reachable provider, or effective policy from 
 ## OCI evidence gates
 
 Local route tests, generated OpenAPI, and mocked provider responses are local evidence only. OCI/provider validation additionally requires the exact tenancy/account, region, compartment, resource, authorization boundary, target, action, cost/blast-radius approval, and sanitized receipt. Release acceptance remains separate.
+
+## Current OCI-DEMO source artifacts
+
+OCI-DEMO now supplies these product-owned, locally verified sources. The
+framework does not import them and does not operate OCI resources.
+
+| Surface | Product-owned artifact | Evidence |
+|---|---|---|
+| Route inventory | `scripts/generate_api_route_inventory.py` | locally verified |
+| API profile and OpenAPI baseline | `docs/architecture/api/` | locally verified |
+| Principal and tenant policy | `control_plane/api/authorization.py` | locally verified |
+| Tool policy | `control_plane/api/tool_security.py` | locally verified |
+| Legacy compatibility | `control_plane/api/legacy_adapter.py` | locally verified |
+
+The listed source artifacts do not replace the OCI evidence gates above. An
+authenticated positive and negative request, cloud tool invocation, deployment,
+or legacy-route retirement needs OCI-DEMO's separately authorized,
+target-bound receipt.
