@@ -7,6 +7,7 @@
 | OCI-DEMO implementation | not started | No product source changed here | Authorize PRD execution by migration wave |
 | Documentation validation CI | code-backed | Read-only GitHub Actions workflow runs `./scripts/check-docs.sh` on pull requests and `main` | Verify the workflow from an authorized GitHub event |
 | Shared lint/contract CI | proposed | No tool dependency selected | Evaluate Spectral/OpenAPI tooling per product |
+| Modular adoption package | code-backed | Product adapter template, JSON OpenAPI example, and dependency-free baseline validator | Adopt in one product and add its chosen full OpenAPI linter and authenticated tests |
 
 ## Update rule
 

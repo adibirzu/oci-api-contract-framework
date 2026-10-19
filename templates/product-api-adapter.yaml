@@ -1,0 +1,33 @@
+# Copy this file into the owning product. Keep values declarative and non-sensitive.
+product_api_adapter:
+  version: "1"
+  status: proposed
+  api:
+    owner: "replace-with-product-owner"
+    audience: internal-or-external
+    stability: experimental
+    openapi_source: "api/contracts/openapi.json"
+    base_path: "/api/v1"
+  modules:
+    request_context: "api/modules/request_context"
+    authorization: "api/modules/authorization"
+    error_mapping: "api/modules/errors"
+    audit_redaction: "api/modules/audit"
+    resources: ["replace-with-domain-module"]
+    actions: []
+  identity_and_tenancy:
+    principal_source: verified-authentication-context
+    tenant_source: verified-authentication-context
+    cross_tenant_access: deny-by-default
+  implementation:
+    runtime: "replace-with-fastapi-or-other-runtime"
+    generated_openapi_is_canonical: false
+  compatibility:
+    policy: additive-with-deprecation-window
+    consumer_inventory: required-before-retirement
+  validation:
+    baseline_contract_command: "sh ./scripts/check-contract.sh api/contracts/openapi.json"
+    product_tests: "replace-with-product-test-command"
+  evidence:
+    current: proposed
+    release_requires: [local_tests, authenticated_integration, approval]
