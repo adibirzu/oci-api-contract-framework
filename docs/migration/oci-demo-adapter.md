@@ -38,20 +38,22 @@ Do not infer a deployed component, reachable provider, or effective policy from 
 
 Local route tests, generated OpenAPI, and mocked provider responses are local evidence only. OCI/provider validation additionally requires the exact tenancy/account, region, compartment, resource, authorization boundary, target, action, cost/blast-radius approval, and sanitized receipt. Release acceptance remains separate.
 
-## Current OCI-DEMO source artifacts
+## OCI-DEMO contract baseline
 
-OCI-DEMO now supplies these product-owned, locally verified sources. The
-framework does not import them and does not operate OCI resources.
+`templates/oci-demo-api-profile.yaml` is this framework's code-backed baseline
+for an OCI-DEMO migration. It identifies the product-owned artifacts a product
+implementation must supply and validate; this framework neither imports nor
+verifies those artifacts, and it does not operate OCI resources.
 
-| Surface | Product-owned artifact | Evidence |
+| Surface | Expected product-owned artifact | Evidence in this framework |
 |---|---|---|
-| Route inventory | `scripts/generate_api_route_inventory.py` | locally verified |
-| API profile and OpenAPI baseline | `docs/architecture/api/` | locally verified |
-| Principal and tenant policy | `control_plane/api/authorization.py` | locally verified |
-| Tool policy | `control_plane/api/tool_security.py` | locally verified |
-| Legacy compatibility | `control_plane/api/legacy_adapter.py` | locally verified |
+| Route inventory | `scripts/generate_api_route_inventory.py` | unverified |
+| API profile and OpenAPI baseline | `docs/architecture/api/` | unverified |
+| Principal and tenant policy | `control_plane/api/authorization.py` | unverified |
+| Tool policy | `control_plane/api/tool_security.py` | unverified |
+| Legacy compatibility | `control_plane/api/legacy_adapter.py` | unverified |
 
-The listed source artifacts do not replace the OCI evidence gates above. An
-authenticated positive and negative request, cloud tool invocation, deployment,
-or legacy-route retirement needs OCI-DEMO's separately authorized,
-target-bound receipt.
+The baseline requires product-owned validation before any of these artifacts
+can be treated as local evidence. An authenticated positive and negative
+request, cloud tool invocation, deployment, or legacy-route retirement needs
+OCI-DEMO's separately authorized, target-bound receipt.
